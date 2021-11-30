@@ -5,6 +5,7 @@ using TechTalk.SpecFlow;
 
 namespace GL_SDP.Hooks
 {
+    [Binding]
     public class SharedBrowserHooks
     {
         [BeforeTestRun]
@@ -13,6 +14,7 @@ namespace GL_SDP.Hooks
             testThreadContainer.BaseContainer.Resolve<BrowserDriver>();
         }
 
+        [BeforeScenario("OpenMainPage")]
         public static void BeforeScenario(BrowserDriver browserDriver)
         {
             var glPageObject = new PageObjectGlobalLogic(browserDriver.Current);
